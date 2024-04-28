@@ -12,8 +12,6 @@ import { capitalize } from 'vue'
 
 import Unocss from 'unocss/vite'
 
-import { presetAttributify, presetIcons, presetUno } from 'unocss'
-
 import { hasDemo } from '../scripts/utils'
 import { augmaChildren } from './metadata/src'
 
@@ -21,27 +19,13 @@ import { alias } from './augma/node'
 
 // do not use './augma/src' directly to avoid ts load *.vue
 import { AugmaResolver } from './augma/src/resolver'
-import { presetAugma } from './augma/src/preset'
-import { safelist } from './augma/src/preset/safelist'
 
 export default defineConfig({
   resolve: {
     alias,
   },
   plugins: [
-    Unocss({
-      presets: [
-        presetAttributify({
-          /* preset options */
-        }),
-        presetUno(),
-        presetIcons({
-          /* options */
-        }),
-        presetAugma(),
-      ],
-      safelist,
-    }),
+    Unocss(),
 
     // https://github.com/antfu/unplugin-vue-components
     Components({
